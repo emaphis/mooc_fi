@@ -33,3 +33,5 @@ dist/
 nbdist/
 .nb-gradle/
 
+**build_log.txt
+**build_errors.txt
