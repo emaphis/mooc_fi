@@ -3,8 +3,18 @@ import java.util.Scanner;
 public class Palindromi {
 
     public static boolean palindrome(String text) {
-        // write code here
-        return false;
+        String reverse = reverse(text);
+        return text.equals(reverse);
+    }
+
+    public static String reverse(String text) {
+        String help = "";
+        int len = text.length() - 1;
+        while (len >= 0) {
+            help += text.charAt(len);
+            len--;
+        }
+        return help;
     }
 
     public static void main(String[] args) {
