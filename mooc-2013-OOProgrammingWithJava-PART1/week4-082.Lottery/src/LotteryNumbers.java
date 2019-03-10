@@ -3,8 +3,10 @@ import java.util.Random;
 
 public class LotteryNumbers {
     private ArrayList<Integer> numbers;
+    private Random random;
 
     public LotteryNumbers() {
+        this.random = new Random();
         // Draw numbers as LotteryNumbers is created
         this.drawNumbers();
     }
@@ -13,14 +15,22 @@ public class LotteryNumbers {
         return this.numbers;
     }
 
-    public void drawNumbers() {
+    public final void drawNumbers() {
         // We'll format a list for the numbers
         this.numbers = new ArrayList<Integer>();
         // Write the number drawing here using the method containsNumber()
+        int count = 7;
+        while (count > 0) {
+            int num = random.nextInt(39) + 1;
+            if (!containsNumber(num)) {
+                numbers.add(num);
+                count--;
+            }
+        }
     }
 
     public boolean containsNumber(int number) {
         // Test here if the number is already in the drawn numbers
-        return true;
+        return numbers.contains(number);
     }
 }

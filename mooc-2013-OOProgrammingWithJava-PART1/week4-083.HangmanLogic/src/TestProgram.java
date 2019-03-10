@@ -12,7 +12,7 @@ public class TestProgram {
         l.guessLetter("S");
         l.guessLetter("F");
         l.guessLetter("D");
-        System.out.println("Guessed letterd: " + l.guessedLetters());
+        System.out.println("Guessed letters: " + l.guessedLetters());
         System.out.println("Number of faults: " + l.numberOfFaults());
         System.out.println("Word is: " + l.hiddenWord());
 
