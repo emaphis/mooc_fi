@@ -5,11 +5,15 @@ public class Person {
     private int weight;
     private int height;
 
-    public Person(String intialName) {
-        this.age = 0;
+    public Person(String intialName, int initialAge) {
+        this.age = initialAge;
         this.name = intialName;
         this.weight = 0;
         this.height = 0;
+    }
+
+    public Person(String initialName) {
+        this(initialName, 0);
     }
 
     @Override
@@ -18,15 +22,27 @@ public class Person {
     }
 
     public void becomeOlder() {
-        this.age++; 
+        becomeOlder(1);
     }
 
+    public void becomeOlder(int years) {
+        age += years;
+    }
+    
     public boolean isAdult() {
         return this.age >= 18;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWeight() {
+        return weight;
     }
 
     public void setHeight(int newHeight) {
@@ -37,10 +53,8 @@ public class Person {
         this.weight = newWeight;
     }
 
-    public double bodyMassIndex() {
-        double heightDividedByHundred = this.height / 100.0;
-        return weight / (heightDividedByHundred * heightDividedByHundred);
+    public double weightIndex() {
+        double heightInMeters = this.height / 100.0;
+        return weight / (heightInMeters * heightInMeters);
     }
-
-
 }

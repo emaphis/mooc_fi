@@ -2,17 +2,19 @@
 public class PersonApp {
 
     public static void main(String[] args) {
-        Person matti = new Person("Matti");
-        Person john = new Person("John");
+        Person pekka = new Person("Pekka", 24);
 
-    matti.setHeight(180);
-    matti.setWeight(86);
+        System.out.println(pekka);
 
-    john.setHeight(175);
-    john.setWeight(64);
+        Person person = pekka;
+        person.becomeOlder(25);
 
-    System.out.println(matti.getName() + ", body mass index: " + matti.bodyMassIndex());
-    System.out.println(john.getName() + ", body mass index: " + john.bodyMassIndex());
+        System.out.println(pekka);
+ 
+        pekka = new Person("Pekka Mikkola", 24);
+        System.out.println(pekka);
 
+        person = null;
+        System.out.println(person);
     }
 }
