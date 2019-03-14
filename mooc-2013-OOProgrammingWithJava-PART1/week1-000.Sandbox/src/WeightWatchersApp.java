@@ -49,6 +49,10 @@ public class WeightWatchersApp {
         weightWatcher.addAsMember(petri);
 
         System.out.println( weightWatcher );
+
+        Person heaviest = weightWatcher.personWithHighestWeightIndex();
+        System.out.println("member with the greatest wieght index: " + heaviest.getName());
+        System.out.println(" weight index " +  String.format("%.2f", heaviest.weightIndex()));
     }
  
     public static void main(String[] args) {

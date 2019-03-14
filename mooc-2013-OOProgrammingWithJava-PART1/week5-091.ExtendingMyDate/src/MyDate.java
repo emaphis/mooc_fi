@@ -11,6 +11,7 @@ public class MyDate {
         this.year = year;
     }
 
+    @Override
     public String toString() {
         return this.day + "." + this.month + "." + this.year;
     }
@@ -32,4 +33,31 @@ public class MyDate {
         return false;
     }
 
+    public void advance() {
+        day++;
+ 
+        if (day > 30) {
+            day = 1;
+            month++;
+
+            if (month > 12) {
+                month = 1;
+                year++;
+            }
+        }
+    }
+
+    public void advance(int numberOfDays) {
+        int count = 0;
+        while (count < numberOfDays) {
+            advance();
+            count++;
+        } 
+    }
+
+    public MyDate afterNumberOfDays(int days){
+        MyDate newMyDate = new MyDate(this.day, this.month, this.year);
+        newMyDate.advance(days);
+        return newMyDate;
+    }
 }

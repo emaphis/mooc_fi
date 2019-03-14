@@ -33,6 +33,23 @@ public class WeightWatchersAssociation {
         this.members.add(person);
     }
 
+    public Person personWithHighestWeightIndex() {
+        // if members is empty, we'll return the null reference
+        if (members.isEmpty()) {
+            return null;
+        }
+
+        Person heaviestSoFar = members.get(0);
+
+        for (Person person : members) {
+            if (person.weightIndex() > heaviestSoFar.weightIndex()) {
+                heaviestSoFar = person;
+            }
+        }
+
+        return heaviestSoFar;
+    }
+
     @Override
     public String toString() {
         String membersAsString = "";
