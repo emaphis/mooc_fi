@@ -1,6 +1,5 @@
 
 import java.util.Scanner;
-import jdk.nashorn.internal.runtime.linker.BoundCallable;
 
 public class Main {
 

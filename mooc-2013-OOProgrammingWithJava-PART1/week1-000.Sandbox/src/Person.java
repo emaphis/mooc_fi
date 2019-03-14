@@ -4,6 +4,7 @@ public class Person {
     private int age;
     private int weight;
     private int height;
+    private MyDate birthMyDate;
 
     public Person(String intialName, int initialAge) {
         this.age = initialAge;
@@ -16,9 +17,16 @@ public class Person {
         this(initialName, 0);
     }
 
+    public Person(String name, int day, int month, int year) {
+        this.name = name;
+        this.weight = 0;
+        this.height = 0;
+        this.birthMyDate = new MyDate(day, month, year);
+    }
+
     @Override
     public String toString() {
-        return this.name + ", age " + this.age + " years";
+        return this.name + ", born " + this.birthMyDate;
     }
 
     public void becomeOlder() {
@@ -35,6 +43,11 @@ public class Person {
 
     public String getName() {
         return name;
+    }
+
+    
+    public int getAge() {
+        return age;
     }
 
     public int getHeight() {
@@ -56,5 +69,9 @@ public class Person {
     public double weightIndex() {
         double heightInMeters = this.height / 100.0;
         return weight / (heightInMeters * heightInMeters);
+    }
+
+    public boolean olderThan(Person person) {
+        return this.getAge() > person.getAge();
     }
 }

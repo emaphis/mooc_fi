@@ -10,5 +10,20 @@ public class Apartment {
         this.squareMeters = squareMeters;
         this.pricePerSquareMeter = pricePerSquareMeter;
     }
-    
+
+    public boolean larger(Apartment otherApartment) {
+        return this.squareMeters > otherApartment.squareMeters;
+    }
+
+    public int price() {
+        return squareMeters * pricePerSquareMeter;
+    }
+  
+    public int priceDifference(Apartment otherApartment) {
+        return Math.abs(this.price() - otherApartment.price());
+    }
+
+    public boolean moreExpensiveThan(Apartment otherApartment) {
+        return this.price() > otherApartment.price();
+    }
 }
