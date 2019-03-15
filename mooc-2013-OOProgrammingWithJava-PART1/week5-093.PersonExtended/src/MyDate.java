@@ -36,9 +36,11 @@ public class MyDate {
      * In assignment 92 method differneceInYears was added to MyDate 
      * Copy the method here since it eases this assignment considerably.
      */
-    public int differneceInYears(MyDate compared) {
-        return -99;
-    }
+    public int differenceInYears(MyDate comparedDate) {
+        int days1 = (year * 365) + (month * 30) + day;
+        int days2 = (comparedDate.year * 365) + (comparedDate.month * 30) + comparedDate.day; 
+        int diff = Math.abs(days1 - days2);
 
-  
+        return diff / 365;
+    }
 }

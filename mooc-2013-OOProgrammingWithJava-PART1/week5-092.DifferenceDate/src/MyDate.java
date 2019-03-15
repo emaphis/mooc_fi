@@ -30,4 +30,11 @@ public class MyDate {
         return false;
     }
 
+    public int differenceInYears(MyDate comparedDate) {
+        int days1 = (year * 365) + (month * 30) + day;
+        int days2 = (comparedDate.year * 365) + (comparedDate.month * 30) + comparedDate.day; 
+        int diff = Math.abs(days1 - days2);
+
+        return diff / 365;
+    }
 }
