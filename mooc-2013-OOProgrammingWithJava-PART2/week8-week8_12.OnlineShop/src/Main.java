@@ -1,4 +1,7 @@
 
+import java.util.Scanner;
+
+
 public class Main {
 
     static void testStorehouse() {
@@ -58,6 +61,37 @@ public class Main {
         System.out.println("basket price: " + basket.price());
         basket.add("computer", 899);
         System.out.println("basket price: " + basket.price());
+        basket.print();
+    }
+
+    static void testIncreasAmount() {
+        ShoppingBasket basket = new ShoppingBasket();
+        basket.add("milk", 3);
+        basket.print();
+        System.out.println("basket price: " + basket.price() +"\n");
+
+        basket.add("buttermilk", 2);
+        basket.print();
+        System.out.println("basket price: " + basket.price() +"\n");
+
+        basket.add("milk", 3);
+        basket.print();
+        System.out.println("basket price: " + basket.price() +"\n");
+
+        basket.add("milk", 3);
+        basket.print();
+        System.out.println("basket price: " + basket.price() +"\n");
+    }
+
+    static void testShop() {
+        Storehouse store = new Storehouse();
+        store.addProduct("coffee", 5, 10);
+        store.addProduct("milk", 3, 20);
+        store.addProduct("milkbutter", 2, 55);
+        store.addProduct("bread", 7, 8);
+
+        Shop shop = new Shop(store, new Scanner(System.in));
+        shop.manage("Pekka");
     }
 
 
@@ -67,6 +101,8 @@ public class Main {
         //testStocks();
         //testProducts();
         //testPurchase();
-        testShoppingBasket();
+        //testShoppingBasket();
+        //testIncreasAmount();
+        testShop();
     }
 }
