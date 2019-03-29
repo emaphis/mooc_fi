@@ -1,77 +1,49 @@
 
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Map;
-import java.util.HashMap;
 import java.util.List;
 
 
-public class SkiJumper implements Comparable<SkiJumper> {
+public class SkiJumper implements Comparable<SkiJumper>
+{
     private final String name;
-    private final Map<Integer, SkiJump> jumps;
-    private final Random random;
-    private int round;
+    private final List<Integer> jumps;
+    private int totalScore;
 
     public SkiJumper(String name) {
         this.name = name;
-        this.jumps = new HashMap<Integer, SkiJump>();
-        this.random = new Random();
-        this.round = 0;
+        this.jumps = new ArrayList<Integer>();
+        this.totalScore = 0;
     }
 
     public String getName() {
         return name;
     }
 
-    public void addJump(Integer round, SkiJump jump) {
-        jumps.put(round, jump);
-        this.round = round;
-    }
-
-    public SkiJump getJump(Integer round) {
-        return jumps.get(round);
+    public void addJump(SkiJump jump) {
+        jumps.add(jump.getLength());
+        totalScore += jump.getScore();
     }
 
     public void printJumps() {
-        for (int i = 1; i <= round; i++){
-            System.out.println(jumps.get(i));
+        for (Integer jump : jumps) {
+            System.out.println(jump);
         }
     }
 
-    public int getTotalScore() {
-        int tot = 0;
-        for (int i = 1; i <= jumps.size(); i++) {
-            SkiJump jump = jumps.get(i);
-            if (jump == null) {
-                System.out.print("getTotalScore() error!"); // error
-            } else {
-                tot += jump.getTotal();
-            }
-        }
-        return tot;
-    }
-
-    public List<SkiJump> getJumps() {
-        List<SkiJump> jumpList =  new ArrayList<SkiJump>(jumps.values());
-        //Collections.sort(jumpList);
-        
-        return jumpList; 
+    public List<Integer> getJumps() {
+        return jumps; 
     }
 
     @Override
     public String toString() {
         String name1 = getName(); // TODO:
-        int score= getTotalScore();
-        return name1 + " (" + score + " points)";
+  //      int totalScore= getTotalScore();
+        return name1 + " (" + totalScore + " points)";
     }
-
 
     @Override
     public int compareTo(SkiJumper other) {
-        return this.getTotalScore() - other.getTotalScore();
+        return other.totalScore - this.totalScore;
     }
 
 }

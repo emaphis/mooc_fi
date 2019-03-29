@@ -1,60 +1,58 @@
 
 import java.util.Collections;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class SkiJump {
-    private final ArrayList<Integer> scores;
+    private final List<Integer> scores;
     private int length;
     private final Random random;
-    private final int round;
 
     public SkiJump(int round) {
-        this.scores = new ArrayList<Integer>(5);
+        this.scores = new ArrayList<Integer>();
         this.length = 0;
         this.random = new Random();
-        this.round = round;
     }
 
     public void jump() {
-        length = calcJump();
+        length = calcRandom(60, 120);
         judgeJump();
     }
 
-    private int calcScore() {
-        return random.nextInt(10) + 10;
-    }
-
-    private int calcJump() {
-        return random.nextInt(60) + 60;
+    // from formula
+    private int calcRandom(int min, int max) {
+        return random.nextInt((max - min) + 1) + min;
     }
 
     private void judgeJump() {
         for (int i = 0; i < 5; i++) {
-            scores.add(i, calcScore());
+            scores.add(calcRandom(10, 20));
         }
-    }
-
-    // return total of middle three scores
-    public int middleThree() {
-        int tot = 0;
-        Collections.sort(scores);
-        // total middle three
-        for (int i = 1; i < 4; i++) {
-            tot += scores.get(i);
-        }
-        return tot;
     }
 
     // return total score of jump.
-    public int getTotal() {
-        return length + middleThree();
+    public int getScore() {
+        int ret = 0;
+        for (int score : getMiddleScores()) {
+            ret += score;
+        }
+        return length + ret;
     }
 
     public int getLength() {
         return length;
     }
 
+    private List<Integer> getMiddleScores() {
+        ArrayList<Integer> ret = new ArrayList<Integer>();
+        Collections.sort(scores);
+        for (int i = 1; i < scores.size() - 1; i++) {
+            ret.add(scores.get(i));
+        }
+        return ret;
+    }
+    
     public void printScores() {
         System.out.print("[");
         for (int i = 0; i < scores.size() - 1; i++) {
@@ -65,13 +63,7 @@ public class SkiJump {
 
     @Override
     public String toString() {
-        String out = "Length" + length + "[";
-        for (Integer score : scores) {
-            out += score + " ";
-        }
-        out += "]";
-        return out;
+        return "Length " + length + " " + scores;
     }
-
 
 }
