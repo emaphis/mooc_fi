@@ -15,7 +15,6 @@ public class Item implements Thing, Comparable<Item> {
         return name;
     }
 
-
     @Override
     public int getVolume() {
         return volume;
@@ -30,7 +29,5 @@ public class Item implements Thing, Comparable<Item> {
     public int compareTo(Item other) {
         return this.getVolume() - other.getVolume();
     }
-
-    
 
 }

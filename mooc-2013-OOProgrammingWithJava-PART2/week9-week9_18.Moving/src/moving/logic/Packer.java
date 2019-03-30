@@ -7,7 +7,7 @@ import moving.domain.Box;
 import moving.domain.Thing;
 
 public class Packer {
-    int boxesVolume;
+    private int boxesVolume;
 
     public Packer(int boxesVolume) {
         this.boxesVolume = boxesVolume;
@@ -16,15 +16,11 @@ public class Packer {
     public List<Box> packThings(List<Thing> things) {
         List<Box> boxes = new ArrayList<Box>();
 
-        Box box = new Box(boxesVolume);
         for (Thing thing : things) {
-            if (!box.addThing(thing)) {
-                boxes.add(box);
-                box = new Box(boxesVolume);
-                box.addThing(thing);
-            }
+            Box box = new Box(boxesVolume);
+            box.addThing(thing);
+            boxes.add(box);
         }
-        box.addThing(box);
 
         return boxes;
     }
