@@ -10,7 +10,6 @@ public class Addition extends Operation {
         super("Addition");
     }
 
-
     @Override
     public void execute(Scanner reader) {
         System.out.print("Give the first number: ");
@@ -22,4 +21,3 @@ public class Addition extends Operation {
     }
 
 }
- 
