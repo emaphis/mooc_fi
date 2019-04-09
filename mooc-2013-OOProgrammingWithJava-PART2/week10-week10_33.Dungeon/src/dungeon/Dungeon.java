@@ -11,7 +11,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- *
+ * Represents the dungeon.
+ * The main game loop
  * @author emaphis
  */
 public class Dungeon {
@@ -36,14 +37,23 @@ public class Dungeon {
         // add player thing to beginning of list
         this.things.add(new Thing("@", 0, 0, width, heigth));
 
-        // add vampires
-        for (int i = 0; i < numVampires; i++) {
-            int x = getXCoord();
-            int y = getYCoord();
-            things.add(new Thing("V", x, y, width, heigth));
-        }
+        // add vampires 
+       // for (int i = 0; i < numVampires; i++) {
+       //     int x = getXCoord();
+       //     int y = getYCoord();
+        //    things.add(new Thing("V", x, y, width, heigth));
+        //}
+        //things.add(new Thing("A", 0, 0, width, heigth));
+        //things.add(new Thing("B", 9, 0, width, heigth));
+        //things.add(new Thing("C", 0, 9, width, heigth));
+        //things.add(new Thing("D", 9, 9, width, heigth));
     }
 
+    private Thing testAddVamp(String glyph) {
+        int x = getXCoord();
+        int y = getYCoord();
+        return new Thing(glyph, x, y, width, heigth);
+    }
 
     private int getXCoord() {
         return rand.nextInt(width);
@@ -54,18 +64,23 @@ public class Dungeon {
     }
 
 
-    void run() {
+    public void run() {
         while (life > 0) {
             System.out.println(life);
+            System.out.println();
             printListThings();
             System.out.println();
-            //printMap();
+            printMap();
             System.out.println();
             playerMoves();
             if (move)
                 vampireMoves();
             life--;
         }
+        if (things.size() > 1)
+            System.out.println("YOU LOSE");
+        else
+            System.out.println("YOU WIN!");
     }
 
     private void printListThings() {
@@ -75,8 +90,8 @@ public class Dungeon {
     }
 
     private void printMap() {
-        for (int x = 0; x < heigth; x++) {
-            for (int y = 0; y < width; y++) {
+        for (int y = 0; y < heigth; y++) {
+            for (int x = 0; x < width; x++) {
                 Thing thing = getThingAt(x, y);
                 if (thing == null) {
                     System.out.print(".");
@@ -110,7 +125,7 @@ public class Dungeon {
         }
     }
 
-    //  a-<  w-V  s-^  d->
+    //  a-<  w-^  s-v  d->
     public String calcVampireMove(Thing thing) {
         String move1;
         int rnd = rand.nextInt(4);  // 4 directions
@@ -128,9 +143,9 @@ public class Dungeon {
 
     private String playerMoves() {
         String moves;
-        System.out.print("moves (awsd): "); // ***
+        //System.out.print("moves (a-< w-^ s-v d->): "); // ***
         moves = reader.nextLine();
-        moves = "dsd"; //***************
+       // moves = "s"; //**a-dx  d-u w-dy  s-iy
         things.get(0).move(moves);
         return moves;
     }

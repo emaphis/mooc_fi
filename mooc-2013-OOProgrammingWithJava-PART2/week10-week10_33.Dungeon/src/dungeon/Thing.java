@@ -2,22 +2,20 @@
 package dungeon;
 
 /**
- * Base class to represent movable objects on map.
+ * Class to represent movable objects: player and vampire.
  * @author emaphis
  */
 public class Thing {
     private String glyph;
-    //private int x;
-    //private int y;
-    Coord coord;
+    private Coord coord;
     private int width;
     private int height;
 
-    public Thing(String glyph, int x, int y, int width, int height) {
+    public Thing(String glyph, int x, int y, int width, int heigth) {
         this.glyph = glyph;
         this.coord = new Coord(x, y);
         this.width = width;
-        this.height = height;
+        this.height = heigth;
     }
 
     public String getGlyph() {
@@ -44,9 +42,9 @@ public class Thing {
     }
 
     /**
-     * move Thing given a string of instuctions
-     * instructions: a-<  w-V  s-^  d->
-     * @param moves string of move cammands
+     * move Thing given a string of instructions
+     * instructions: (a-<  w-^ s-v d->)
+     * @param moves string of move commands
      */
     public void move(String moves) {
 
@@ -57,24 +55,40 @@ public class Thing {
             int deltaY = coord.getY();
 
             if (move == 'w') {
-                if (deltaY > 0)
+                if (isUpMoveValid())
                     deltaY--;
             } else if (move == 's') {
-                if (deltaY < height)
+                if (isDownMoveValid())
                     deltaY++;
-            } else if (move == 'a')
-                if (deltaX > 0) {
+            } else if (move == 'a') {
+                if (isLeftMoveValid())
                     deltaX--;
             } else if (move == 'd') {
-                if (deltaX < width)
+                if (isRightMoveValid())
                     deltaX++;
             }
 
-            verifyTheChange(deltaX, deltaY);
+            coord.setCoord(deltaX, deltaY);
         }
     }
 
-    
+    public boolean isUpMoveValid() {  // w
+        return coord.getY() > 0;
+    }
+
+    public boolean isDownMoveValid() {  // s
+        return coord.getY() + 1 < height;
+    }
+
+    public boolean isLeftMoveValid() {  // a
+        return coord.getX() > 0;
+    }
+ 
+    public boolean isRightMoveValid() {  // d
+        return coord.getX() + 1 < width;
+    }
+
+    /*
     private void verifyTheChange(int deltaX, int deltaY) {
         int newX = coord.getX() + deltaX;
         if (newX < 0)
@@ -90,7 +104,7 @@ public class Thing {
             newY = height;
 
         coord.setCoord(newX, newY);
-    }
+    } */
 
     @Override
     public String toString() {
