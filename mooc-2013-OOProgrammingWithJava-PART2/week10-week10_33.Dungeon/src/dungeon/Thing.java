@@ -6,10 +6,10 @@ package dungeon;
  * @author emaphis
  */
 public class Thing {
-    private String glyph;
-    private Coord coord;
-    private int width;
-    private int height;
+    private final String glyph;
+    private final Coord coord;
+    private final int width;
+    private final int height;
 
     public Thing(String glyph, int x, int y, int width, int heigth) {
         this.glyph = glyph;
@@ -21,20 +21,10 @@ public class Thing {
     public String getGlyph() {
         return glyph;
     }
-/*
-    public int getX() {
-        return coord.getX();
-    }
-
-    public int getY() {
-        return coord.getY();
-    }
-*/
 
     public Coord getCoord() {
         return coord;
     }
-
 
     // it the same doesn't intersect
     public boolean intersects(Thing other) {
@@ -54,6 +44,7 @@ public class Thing {
             int deltaX = coord.getX();
             int deltaY = coord.getY();
 
+            // checkig for valid move is now redundant, but will keep.
             if (move == 'w') {
                 if (isUpMoveValid())
                     deltaY--;
@@ -88,23 +79,6 @@ public class Thing {
         return coord.getX() + 1 < width;
     }
 
-    /*
-    private void verifyTheChange(int deltaX, int deltaY) {
-        int newX = coord.getX() + deltaX;
-        if (newX < 0)
-            newX = 0;
-        else if (newX > width)
-            newX = width;
-        
-
-        int newY = coord.getY() + deltaY;
-        if (newY < 0)
-            newY = 0;
-        else if (newY > height)
-            newY = height;
-
-        coord.setCoord(newX, newY);
-    } */
 
     @Override
     public String toString() {

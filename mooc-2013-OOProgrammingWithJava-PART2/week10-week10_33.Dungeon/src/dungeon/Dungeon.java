@@ -16,13 +16,13 @@ import java.util.Scanner;
  * @author emaphis
  */
 public class Dungeon {
-    private int width;  // x
-    private int heigth; // y
+    private final int width;  // x
+    private final int heigth; // y
     private int life;
-    private List<Thing> things;
-    private boolean move;
-    private Random rand;
-    private Scanner reader;
+    private final List<Thing> things;
+    private final boolean move;
+    private final Random rand;
+    private final Scanner reader;
 
     // new Dungeon(10,10,5,14,true).run();
     public Dungeon(int width, int heigth, int numVampires, int life, boolean move) {
@@ -38,15 +38,16 @@ public class Dungeon {
         this.things.add(new Thing("@", 0, 0, width, heigth));
 
         // add vampires 
-       // for (int i = 0; i < numVampires; i++) {
-       //     int x = getXCoord();
-       //     int y = getYCoord();
-        //    things.add(new Thing("V", x, y, width, heigth));
-        //}
+        for (int i = 0; i < numVampires; i++) {
+            int x = getXCoord();
+            int y = getYCoord();
+            things.add(new Thing("v", x, y, width, heigth));
+        }
         //things.add(new Thing("A", 0, 0, width, heigth));
         //things.add(new Thing("B", 9, 0, width, heigth));
         //things.add(new Thing("C", 0, 9, width, heigth));
         //things.add(new Thing("D", 9, 9, width, heigth));
+        //hings.add(new Thing("E", 5, 5, width, heigth));
     }
 
     private Thing testAddVamp(String glyph) {
@@ -127,23 +128,27 @@ public class Dungeon {
 
     //  a-<  w-^  s-v  d->
     public String calcVampireMove(Thing thing) {
-        String move1;
-        int rnd = rand.nextInt(4);  // 4 directions
-        if (rnd == 0) {
-            move1 = "a";
-        } else if (rnd == 1) {
-            move1 = "w";
-        } else if (rnd == 2) {
-            move1 = "s";
-        } else  { // if (rnd == 3) {
-            move1 = "d";
+        ArrayList<String> moves = new ArrayList<String>();
+
+        if (thing.isLeftMoveValid()) {
+            moves.add("a");
         }
-        return move1;
+        if (thing.isUpMoveValid()) {
+            moves.add("w");
+        }
+        if (thing.isDownMoveValid()) {
+            moves.add("s");
+        }
+        if (thing.isRightMoveValid()) {
+            moves.add("d");
+        }
+
+        int pick = rand.nextInt(moves.size());
+        return moves.get(pick);
     }
 
     private String playerMoves() {
         String moves;
-        //System.out.print("moves (a-< w-^ s-v d->): "); // ***
         moves = reader.nextLine();
        // moves = "s"; //**a-dx  d-u w-dy  s-iy
         things.get(0).move(moves);
