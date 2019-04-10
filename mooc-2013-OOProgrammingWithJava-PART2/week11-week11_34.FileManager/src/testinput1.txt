@@ -1,2 +1,2 @@
-eka
-toka
+first
+second
