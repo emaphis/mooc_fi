@@ -19,6 +19,4 @@ public class Box extends Figure {
         graphics.fillRect(getX(), getY(), width, length);
     }
 
-    
-
 }

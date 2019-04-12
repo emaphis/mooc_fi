@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dungeon;
 
 import java.util.List;
@@ -39,18 +35,11 @@ public class Dungeon {
 
         // add vampires 
         for (int i = 0; i < numVampires; i++) {
-            int x = getXCoord();
-            int y = getYCoord();
-            things.add(new Thing("v", x, y, width, heigth));
+            things.add(createVampire("v"));
         }
-        //things.add(new Thing("A", 0, 0, width, heigth));
-        //things.add(new Thing("B", 9, 0, width, heigth));
-        //things.add(new Thing("C", 0, 9, width, heigth));
-        //things.add(new Thing("D", 9, 9, width, heigth));
-        //hings.add(new Thing("E", 5, 5, width, heigth));
     }
 
-    private Thing testAddVamp(String glyph) {
+    private Thing createVampire(String glyph) {
         int x = getXCoord();
         int y = getYCoord();
         return new Thing(glyph, x, y, width, heigth);
@@ -76,12 +65,18 @@ public class Dungeon {
             playerMoves();
             if (move)
                 vampireMoves();
+
+            if (things.size() == 1) {
+                System.out.println("YOU WIN");
+                break;
+            }
+
             life--;
         }
+
         if (things.size() > 1)
             System.out.println("YOU LOSE");
-        else
-            System.out.println("YOU WIN!");
+
     }
 
     private void printListThings() {
@@ -127,7 +122,7 @@ public class Dungeon {
     }
 
     //  a-<  w-^  s-v  d->
-    public String calcVampireMove(Thing thing) {
+    private String calcVampireMove(Thing thing) {
         ArrayList<String> moves = new ArrayList<String>();
 
         if (thing.isLeftMoveValid()) {
@@ -147,13 +142,22 @@ public class Dungeon {
         return moves.get(pick);
     }
 
-    private String playerMoves() {
+    private void playerMoves() {
         String moves;
         moves = reader.nextLine();
        // moves = "s"; //**a-dx  d-u w-dy  s-iy
         things.get(0).move(moves);
-        return moves;
+        checkVampireKill();
     }
-    
+
+    private void checkVampireKill() {
+        Coord pos = things.get(0).getCoord();
+        for (int i = 1; i < things.size(); i++) {
+            Thing vamp = things.get(i);
+            if (pos.equalsCoord(vamp.getCoord())) {
+                things.remove(vamp);
+            }
+        }
+    }
 
 }
