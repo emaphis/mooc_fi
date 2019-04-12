@@ -10,6 +10,11 @@ import javax.swing.WindowConstants;
 public class DrawingUI implements Runnable {
     private JFrame frame;
     private DrawingBoard board;
+    private Avatar avatar;
+
+    public DrawingUI(Avatar avatar) {
+        this.avatar = avatar;
+    }
 
     @Override
     public void run() {
@@ -19,16 +24,21 @@ public class DrawingUI implements Runnable {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         createComponents(frame.getContentPane());
+        addlisteners();
 
         frame.pack();
         frame.setVisible(true);
     }
 
     private void createComponents(Container container) {
-        board = new DrawingBoard();
+        board = new DrawingBoard(avatar);
         container.add(board);
     }
-    
+
+    private void addlisteners() {
+        frame.addKeyListener(new KeyboardListener(avatar, board));
+    }
+
     public JFrame getFrame() {
         return frame;
     }

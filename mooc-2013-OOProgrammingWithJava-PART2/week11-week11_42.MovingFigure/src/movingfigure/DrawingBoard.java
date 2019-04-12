@@ -1,5 +1,5 @@
 
-package drawingapp;
+package movingfigure;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,19 +7,18 @@ import javax.swing.JPanel;
 
 
 public class DrawingBoard extends JPanel {
+    private final Figure figure;
 
-    private final Avatar avatar;
-
-    public DrawingBoard(Avatar avatar) {
+    public DrawingBoard(Figure figure) {
         super();
         super.setBackground(Color.WHITE);
-        this.avatar = avatar;
+        this.figure = figure;
     }
 
     @Override
     protected void paintComponent(Graphics graphics) {
-        super.paintComponent(graphics); 
-        avatar.draw(graphics);
+        super.paintComponent(graphics);
+        figure.draw(graphics);
     }
 
 }
