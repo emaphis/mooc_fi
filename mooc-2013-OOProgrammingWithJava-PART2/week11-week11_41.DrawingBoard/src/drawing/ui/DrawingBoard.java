@@ -13,6 +13,15 @@ public class DrawingBoard extends JPanel {
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
+        // eyes
+        graphics.fillRect(100, 50, 50, 50);
+        graphics.fillRect(250, 50, 50, 50);
 
+        // cheek bones
+        graphics.fillRect(50, 200, 50, 50);
+        graphics.fillRect(300, 200, 50, 50);
+
+        // mouth
+        graphics.fillRect(100, 250, 200, 50);
     }
 }
