@@ -59,7 +59,8 @@ public class SkiJumpUI {
 
     private void printJumpingOrder() {
         int num = 1;
-        Collections.sort(jumpers);  // TODO: doesn't work.
+        Collections.sort(jumpers);
+        Collections.reverse(jumpers);
         System.out.println("Jumping order:");
         for (SkiJumper jumper : jumpers) {
             System.out.println("  " + num + ". "  + jumper);

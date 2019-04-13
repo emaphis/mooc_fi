@@ -36,9 +36,7 @@ public class SkiJumper implements Comparable<SkiJumper>
 
     @Override
     public String toString() {
-        String name1 = getName(); // TODO:
-  //      int totalScore= getTotalScore();
-        return name1 + " (" + totalScore + " points)";
+        return getName() + " (" + totalScore + " points)";
     }
 
     @Override
