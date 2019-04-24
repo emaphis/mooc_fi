@@ -56,8 +56,7 @@ public class RatingRegister {
 
     public Map<Film, Rating> getPersonalRatings(Person person) {
         if (!personalRatings.containsKey(person)) {
-            Map<Film, Rating> filmRating = new HashMap<Film, Rating>();
-            personalRatings.put(person, filmRating);
+            return new HashMap<Film,Rating>();
         }
         return personalRatings.get(person);
     }
