@@ -149,7 +149,70 @@ public class Main {
         System.out.println("The film recommended to Michael is: " + recommended);
     }
 
+    static void testReference2() {
+        RatingRegister ratings = new RatingRegister();
 
+        Film goneWithTheWind = new Film("Gone with the Wind");
+        Film theBridgesOfMadisonCounty = new Film("The Bridges of Madison County");
+        Film eraserhead = new Film("Eraserhead");
+        Film bluesBrothers = new Film("Blues Brothers");
+
+        Person matti = new Person("Matti");
+        Person pekka = new Person("Pekka");
+        Person mikke = new Person("Mikael");
+        Person thomas = new Person("Thomas");
+        Person arto = new Person("Arto");
+
+        ratings.addRating(matti, goneWithTheWind, Rating.BAD);
+        ratings.addRating(matti, theBridgesOfMadisonCounty, Rating.GOOD);
+        ratings.addRating(matti, eraserhead, Rating.FINE);
+
+        ratings.addRating(pekka, goneWithTheWind, Rating.FINE);
+        ratings.addRating(pekka, eraserhead, Rating.BAD);
+        ratings.addRating(pekka, bluesBrothers, Rating.MEDIOCRE);
+
+        ratings.addRating(mikke, eraserhead, Rating.BAD);
+
+        ratings.addRating(thomas, bluesBrothers, Rating.GOOD);
+        ratings.addRating(thomas, theBridgesOfMadisonCounty, Rating.GOOD);
+
+        Reference ref = new Reference(ratings);
+        System.out.println(thomas + " recommendation: " + ref.recommendFilm(thomas));
+        System.out.println(mikke + " recommendation: " + ref.recommendFilm(mikke));
+        System.out.println(matti + " recommendation: " + ref.recommendFilm(matti));
+        System.out.println(arto + " recommendation: " + ref.recommendFilm(arto));
+    }
+
+    static void testApp() {
+       // EvaluationRegister ratings = new EvaluationRegister();
+        RatingRegister ratings = new RatingRegister();
+
+        Film goneWithTheWind = new Film("Gone with the Wind");
+        Film theBridgesOfMadisonCounty = new Film("The Bridges of Madison County");
+        Film eraserhead = new Film("Eraserhead");
+
+        Person matti = new Person("Matti");
+        Person pekka = new Person("Pekka");
+        Person mikke = new Person("Mikke");
+        Person thomas = new Person("Thomas");
+
+        ratings.addRating(matti, goneWithTheWind, Rating.BAD);
+        ratings.addRating(matti, theBridgesOfMadisonCounty, Rating.GOOD);
+        ratings.addRating(matti, eraserhead, Rating.FINE);
+
+        ratings.addRating(pekka, goneWithTheWind, Rating.FINE);
+        ratings.addRating(pekka, theBridgesOfMadisonCounty, Rating.BAD);
+        ratings.addRating(pekka, eraserhead, Rating.MEDIOCRE);
+
+        ratings.addRating(mikke, eraserhead, Rating.GOOD);
+
+
+        Reference reference = new Reference(ratings);
+        System.out.println(thomas + "'s recommendation: " +
+                reference.recommendFilm(thomas));
+        System.out.println(mikke + "'s recommendation: " +
+                reference.recommendFilm(mikke));
+    }
 
     public static void main(String[] args) {
         // Test your code here
@@ -160,6 +223,8 @@ public class Main {
         //testRatingRegister2();
         //testPersonComparator();
         //testFilmComparator();
-        testReference1();
+        //testReference1();
+        //testReference2();
+        testApp();
     }
 }
