@@ -6,7 +6,7 @@ import java.util.List;
 import wormgame.Direction;
 
 
-public class Worm extends Piece {
+public class Worm {
 
     private Direction direction;
     private List<Piece> body;
@@ -14,7 +14,6 @@ public class Worm extends Piece {
     private boolean hasEaten;
 
     public Worm(int x, int y, Direction originalDirection) {
-        super(x, y);
         this.direction = originalDirection;
         this.body = new ArrayList<Piece>();
         this.body.add(new Piece(x, y));
@@ -41,16 +40,6 @@ public class Worm extends Piece {
         return body.get(getLength() - 1);
     }
 
-    @Override
-    public int getX() {
-        return getHead().getX();
-    }
-
-    @Override
-    public int getY() {
-        return getHead().getY();
-    }
-
 
     /**
      * Moves the worms body.
@@ -73,8 +62,8 @@ public class Worm extends Piece {
     }
 
     private void addHead() {
-        int newX = getX();
-        int newY = getY();
+        int newX = getHead().getX();
+        int newY = getHead().getY();
 
         if (direction == Direction.UP) {
             newY--;
@@ -93,9 +82,13 @@ public class Worm extends Piece {
         body.remove(0);
     }
 
-    @Override
-    public boolean runsInto(Piece piece) {
-        return super.runsInto(piece);
+    public boolean runsInto(Piece other) {
+        for (Piece piece : body) {
+            if (piece.getX() == other.getX() && piece.getY() == other.getY()){
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean runsIntoItself() {

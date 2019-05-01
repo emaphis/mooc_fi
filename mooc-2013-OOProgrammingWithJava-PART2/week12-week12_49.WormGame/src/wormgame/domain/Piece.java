@@ -20,7 +20,7 @@ public class Piece {
     }
 
     public boolean runsInto(Piece piece) {
-        return this.x == piece.x && this.y == piece.y;
+        return this.x == piece.getX() && this.y == piece.getY();
     }
 
     @Override

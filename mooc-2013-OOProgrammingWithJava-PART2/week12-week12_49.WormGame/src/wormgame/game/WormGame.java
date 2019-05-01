@@ -26,14 +26,22 @@ public class WormGame extends Timer implements ActionListener {
         this.height = height;
         this.continues = true;
 
+        this.worm = new Worm(width / 2, height / 2, Direction.DOWN);
+        this.rand = new Random();
+        this.apple = addApple();
+
         addActionListener(this);
         setInitialDelay(2000);
 
-        this.worm = new Worm(width / 2, height / 2, Direction.DOWN);
-        this.rand = new Random();
-        this.apple = new Apple(rand.nextInt(width), rand.nextInt(height));
     }
 
+    private Apple addApple() {
+        Apple newApple =  new Apple(rand.nextInt(width), rand.nextInt(height));
+        while (worm.runsInto(newApple)) {
+            newApple =  new Apple(rand.nextInt(width), rand.nextInt(height));
+        }
+        return newApple;
+    }
 
     public boolean continues() {
         return continues;
@@ -75,20 +83,18 @@ public class WormGame extends Timer implements ActionListener {
         worm.move();
         if (worm.runsInto(apple)) {
             worm.grow();
-            this.apple = new Apple(rand.nextInt(width), rand.nextInt(height));
+            this.apple = addApple();
         }
         if (worm.runsIntoItself()) {
             continues = false;
-        } else if (worm.getX() == width || worm.getX() < 0) {
+        } else if (worm.getHead().getX() == width || worm.getHead().getX() < 0) {
             continues = false;
-        } else if (worm.getY() == height || worm.getY() < 0) {
+        } else if (worm.getHead().getY() == height || worm.getHead().getY() < 0) {
             continues = false;
         }
         
         updatable.update();
         setDelay(1000 / worm.getLength());
-
     }
-
 
 }
