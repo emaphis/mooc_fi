@@ -10,6 +10,7 @@ import wormgame.game.WormGame;
 
 
 public class DrawingBoard extends JPanel implements Updatable {
+
     private WormGame wormgame;
     private int pieceLength;
 
@@ -35,7 +36,7 @@ public class DrawingBoard extends JPanel implements Updatable {
 
     @Override
     public void update() {
-        repaint();
+        super.repaint();
     }
 
 }

@@ -28,7 +28,7 @@ public class KeyboardListener implements KeyListener{
             worm.setDirection(Direction.UP);
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             worm.setDirection(Direction.LEFT);
-        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        } else {   // if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             worm.setDirection(Direction.RIGHT);
         }
     }
