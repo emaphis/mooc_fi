@@ -35,3 +35,13 @@ nbdist/
 
 **build_log.txt
 **build_errors.txt
+/mooc-java-programming-i/part01-Part01_02.AdaLovelace/target/
+/mooc-java-programming-i/part01-Part01_01.Sandbox/target/
+/mooc-java-programming-i/part01-Part01_03.OnceUponATime/target/
+/mooc-java-programming-i/part01-Part01_04.Dinosaur/target/
+/mooc-java-programming-i/part01-Part01_05.Message/target/
+/mooc-java-programming-i/part01-Part01_06.HiAdaLovelace/target/
+/mooc-java-programming-i/part01-Part01_07.MessageThreeTimes/target/
+/mooc-java-programming-i/part01-Part01_08.Greeting/target/
+/mooc-java-programming-i/part01-Part01_09.Conversation/target/
+/mooc-java-programming-i/part01-Part01_10.Story/target/
