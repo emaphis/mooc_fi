@@ -7,6 +7,14 @@ public class SimpleCalculator {
         Scanner scanner = new Scanner(System.in);
 
         // Write your program here
-
+        System.out.println("Give the first number:");
+        int first = Integer.valueOf(scanner.nextLine());
+        System.out.println("Give the second number:");
+        int second = Integer.valueOf(scanner.nextLine());
+        
+        System.out.println(first + " + " + second + " = " + (first + second));
+        System.out.println(first + " - " + second + " = " + (first - second));
+        System.out.println(first + " * " + second + " = " + (first * second));
+        System.out.println(first + " / " + second + " = " + ((first * 1.0) / second));
     }
 }
