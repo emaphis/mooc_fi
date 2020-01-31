@@ -8,4 +8,7 @@ public class Word {
 
     }
 
+    public static String word() {
+        return "string of my choice";
+    }
 }
