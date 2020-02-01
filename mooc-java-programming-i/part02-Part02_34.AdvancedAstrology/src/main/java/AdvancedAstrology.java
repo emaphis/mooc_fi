@@ -28,25 +28,29 @@ public class AdvancedAstrology {
             printStars(count);
             count++;
         }
-        System.out.println();
     }
 
     public static void christmasTree(int height) {
         // part 3 of the exercise
+        int count = 1;
+        while (count < height + 1) {
+            printSpaces(height - count);
+            printStars(count + (count - 1));
+            count++;
+        }
+        printSpaces(height - 2);
+        printStars(3);
+        printSpaces(height - 2);
+        printStars(3);
     }
 
     public static void main(String[] args) {
         // The tests are not checking the main, so you can modify it freely.
 
-     //   printSpaces(1); System.out.println("-*-");
-     //   System.out.println("ooo");
-     //   printSpaces(3); System.out.println("-*-");
-        printTriangle(4);
-/*
         printTriangle(5);
         System.out.println("---");
         christmasTree(4);
         System.out.println("---");
-        christmasTree(10);*/
+        christmasTree(10);
     }
 }
