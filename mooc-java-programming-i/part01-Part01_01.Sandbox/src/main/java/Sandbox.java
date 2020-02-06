@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -9,24 +10,18 @@ public class Sandbox {
         //System.out.println("Hello, Sandbox!");
 
         Scanner scanner = new Scanner(System.in);
-        int values = 0;
-        int sum = 0;
 
-        while (true) {
-            System.out.println("Provide a value, a negative value ends the program");
-            int value = Integer.valueOf(scanner.nextLine());
-            if (value < 0) {
-                break;
-            }
+        ArrayList<Integer> numbers= new ArrayList<>();
 
-            values = values + 1;
-            sum = sum + value;
-        }
+        numbers.add(2);
+        numbers.add(6);
+        numbers.add(5);
+        numbers.add(3);
 
-        if (sum == 0) {
-            System.out.println("The average of the values could not be calculated.");
-        } else {
-            System.out.println("Average of values: " + (1.0 * sum / values));
+        numbers.remove(Integer.valueOf(2));
+
+        for (Integer number : numbers) {
+            System.out.println(number);
         }
     }
 }
