@@ -5,7 +5,11 @@ public class MainProgram {
         DecreasingCounter counter = new DecreasingCounter(10);
 
         counter.printValue();
+
         counter.decrement();
+        counter.printValue();
+
         counter.decrement();
+        counter.printValue();
     }
 }

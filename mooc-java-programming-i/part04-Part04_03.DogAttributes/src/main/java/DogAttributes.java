@@ -8,5 +8,6 @@ public class DogAttributes {
 
         // Follow the instructions carefully
         // and run the tests.
+        Dog dog = new Dog();
     }
 }
