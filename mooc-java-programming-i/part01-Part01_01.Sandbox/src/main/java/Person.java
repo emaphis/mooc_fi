@@ -3,14 +3,32 @@
 public class Person {
     private String name;
     private int age;
+    private int weight;
+    private int height;
 
     public Person(String initialName) {
         this.age = 0;
+        this.weight = 0;
+        this.height = 0;
         this.name = initialName;
     }
 
-    public void printPerson() {
-        System.out.println(this.name + ", age " + this.age + " years");
+    public void setHeight(int newHeight) {
+        height = newHeight;
+    }
+
+    public void setWeight(int newWeight) {
+        weight = newWeight;
+    }
+
+    public double bodyMassIndex() {
+        double heigthPerHundred = height / 100.0;
+        return weight / (heigthPerHundred * heigthPerHundred);
+    }
+
+    @Override
+    public String toString() {
+        return name + ", age " + age + " years ";
     }
 
     // growOlder() method has been added
@@ -23,4 +41,17 @@ public class Person {
     public int returnAge() {
         return age;
     }
+
+    public boolean isOfLegalAge() {
+        if (age < 18) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public String getName() {
+        return name;
+    }
+
 }
