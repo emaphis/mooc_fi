@@ -9,6 +9,7 @@ public class TelevisionProgram {
         this.duration = duration;
     }
 
+    // LoL!!
     public boolean isAwesome() {
         return this.name.contains("MasterChef");
     }
