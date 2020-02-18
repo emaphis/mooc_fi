@@ -2,6 +2,10 @@
 
 Object-Oriented programming with Java.
 
-http://moocfi.github.io/courses/2013/programming-part-1/
+<http://moocfi.github.io/courses/2013/programming-part-1/>
 
-http://moocfi.github.io/courses/2013/programming-part-2/
+<http://moocfi.github.io/courses/2013/programming-part-2/>
+
+Updated MOOC:
+
+<https://java-programming.mooc.fi/>
