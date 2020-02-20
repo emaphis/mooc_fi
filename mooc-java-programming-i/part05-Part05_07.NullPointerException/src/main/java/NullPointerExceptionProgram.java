@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class NullPointerExceptionProgram {
 
     public static void main(String[] args) {
-        // Implement a program, or modify a program so, that it causes 
+        // Implement a program, or modify a program so, that it causes
         // the NullPointerException -error
 
         ArrayList<String> lines = new ArrayList<>();
@@ -14,6 +14,8 @@ public class NullPointerExceptionProgram {
         lines.add("give up most of his life for physics and research of many hypothesis. But, this is why");
         lines.add("you and I have even heard of the quantum theory and atomic structures. Bohr came");
         lines.add("up with his quantum theory while studying...");
+
+        lines = null;  // opps!!!
 
         int index = 0;
         while (index < lines.size()) {

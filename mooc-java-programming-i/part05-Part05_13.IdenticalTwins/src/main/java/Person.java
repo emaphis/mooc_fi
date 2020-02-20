@@ -16,4 +16,25 @@ public class Person {
     }
 
     // implement an equals method here for checking the equality of objects
+    @Override
+    public boolean equals (Object compared) {
+        if (this == compared) {
+            return true;
+        }
+
+        if (!(compared instanceof Person)) {
+            return false;
+        }
+
+        Person comparedPerson = (Person) compared;
+
+        if (name.equals(comparedPerson.name) &&
+            birthday.equals(comparedPerson.birthday) &&
+            weight == comparedPerson.weight &&
+            height == comparedPerson.height) {
+            return true;
+        }
+
+        return false;
+    }
 }
