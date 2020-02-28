@@ -12,5 +12,34 @@ public class Main {
         UserInterface ui = new UserInterface(list, scanner);
         ui.start();
 
+        //part1b();
+    }
+
+    static void part1a() {
+        TodoList list = new TodoList();
+        list.add("read the course material");
+        list.add("watch the latest fool us");
+        list.add("take it easy");
+
+        list.print();
+        list.remove(2);
+
+        System.out.println();
+        list.print();
+    }
+
+    static void part1b() {
+        TodoList list = new TodoList();
+        list.add("read the course material");
+        list.add("watch the latest fool us");
+        list.add("take it easy");
+        list.print();
+        list.remove(2);
+        list.print();
+        list.add("buy rasins");
+        list.print();
+        list.remove(1);
+        list.remove(1);
+        list.print();
     }
 }

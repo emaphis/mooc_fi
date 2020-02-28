@@ -16,4 +16,9 @@ public class SimpleDictionary {
     public void add(String word, String translation) {
         this.translations.put(word, translation);
     }
+
+    @Override
+    public String toString() {
+        return translations.toString();
+    }
 }

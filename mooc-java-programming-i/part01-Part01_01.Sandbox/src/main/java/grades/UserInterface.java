@@ -1,6 +1,12 @@
+package grades;
 
 import java.util.Scanner;
 
+/**
+ * Week 6 example
+ *
+ * @author emaphis
+ */
 public class UserInterface {
 
     private GradeRegister register;
@@ -13,45 +19,43 @@ public class UserInterface {
 
     public void start() {
         readPoints();
-        System.out.println("");
+        System.out.println();
         printGradeDistribution();
-        System.out.println("The average of points: " + register.averageOfPoints());
-        System.out.println("The average of grades: " + register.averageOfGrades());
     }
 
-    public void readPoints() {
+    void readPoints() {
         while (true) {
             System.out.print("Points: ");
             String input = scanner.nextLine();
+
             if (input.equals("")) {
                 break;
             }
 
-            int points = Integer.valueOf(input);
+            int score = Integer.valueOf(input);
 
-            if (points < 0 || points > 100) {
-                System.out.println("Impossible number.");
+            if (score < 0 || score > 100) {
+                System.out.println("Inpossibe number");
                 continue;
             }
 
-            this.register.addGradeBasedOnPoints(points);
+            register.addGradeBasedOnPoints(score);
         }
     }
 
-    public void printGradeDistribution() {
+    void printGradeDistribution() {
         int grade = 5;
         while (grade >= 0) {
             int stars = register.numberOfGrades(grade);
             System.out.print(grade + ": ");
-            printsStars(stars);
-            System.out.println("");
+            printStars(stars);
+            System.out.println();
 
             grade = grade - 1;
         }
-
     }
 
-    public static void printsStars(int stars) {
+    void printStars(int stars) {
         while (stars > 0) {
             System.out.print("*");
             stars--;
