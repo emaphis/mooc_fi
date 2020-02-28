@@ -1,12 +1,16 @@
 
-
+import org.junit.Assert;
 import org.junit.Test;
-import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import org.junit.Before;
 
-public class ExerciseManagementTest {
+/**
+ *
+ * @author emaphis
+ */
+public class ExerciseManagemetTest {
     private ExerciseManagement management;
 
     @Before
@@ -20,29 +24,30 @@ public class ExerciseManagementTest {
     }
 
     @Test
-    public void addingExerciseListGrowsListByOne() {
+    public void addingExerciseGrowsListByONe() {
         management.add("Write a test");
         assertEquals(1, management.exerciseList().size());
     }
 
+
     @Test
     public void addedExerciseIsInList() {
-        ExerciseManagement management = new ExerciseManagement();
         management.add("Write a test");
         assertTrue(management.exerciseList().contains("Write a test"));
     }
 
     @Test
-    public void exerciseCanBeMarkedCompleted() {
+    public void exerciseCanBeMarkedAsCompleted() {
         management.add("New exercise");
         management.markAsCompleted("New exercise");
-        assertTrue(management.isCompleted("New exercise"));
+        assertTrue(management.isCompeted("New exercise"));
     }
+
 
     @Test
     public void ifNotMarkedCompletedIsNotCompleted() {
         management.add("New exercise");
-        management.markAsCompleted("New exercises");
-        assertFalse(management.isCompleted("Some exercise"));
+        management.markAsCompleted("New exercise");
+        assertFalse(management.isCompeted("Some exercise"));
     }
 }

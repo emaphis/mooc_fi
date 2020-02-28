@@ -1,12 +1,17 @@
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author emaphis
+ */
 public class ExerciseManagement {
     private ArrayList<Exercise> exercises;
 
     public ExerciseManagement() {
         this.exercises = new ArrayList<>();
     }
+
 
     public ArrayList<String> exerciseList() {
         ArrayList<String> list = new ArrayList<>();
@@ -16,17 +21,19 @@ public class ExerciseManagement {
         return list;
     }
 
-    public void add(String exercise) {
-        exercises.add(new Exercise(exercise));
+    public void add(String exercisea) {
+        exercises.add(new Exercise(exercisea));
     }
 
     public void markAsCompleted(String exercise) {
         for (Exercise ex : exercises) {
-            ex.setCompeted(true);
+            if (ex.getName().equals(exercise)) {
+                ex.setCompeted(true);
+            }
         }
     }
 
-    public boolean isCompleted(String exercise) {
+    public boolean isCompeted(String exercise) {
         for (Exercise ex : exercises) {
             if (ex.getName().equals(exercise)) {
                 return ex.isCompeted();
