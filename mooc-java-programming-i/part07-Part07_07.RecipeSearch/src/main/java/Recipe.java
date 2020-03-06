@@ -20,4 +20,30 @@ public class Recipe {
         ingredients.add(ingredient);
     }
 
+    public int getCookingTime() {
+        return cookingTime;
+    }
+
+    public ArrayList<String> getIngredients() {
+        return ingredients;
+    }
+
+    public boolean containsIngredient(String ingredient) {
+        for (String ingredient1 : ingredients) {
+            if (ingredient1.equals(ingredient)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return name + ", cooking time: " + cookingTime;
+    }
+
 }
