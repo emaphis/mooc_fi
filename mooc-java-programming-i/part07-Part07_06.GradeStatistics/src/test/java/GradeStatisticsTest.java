@@ -13,7 +13,7 @@ public class GradeStatisticsTest {
     public MockStdio io = new MockStdio();
 
     @Test
-    @Points("07-07.1")
+    @Points("07-06.1")
     public void avgAll1() {
         io.setSysIn(userInput(-42, 24, 42, 72, 80, 52) + "-1\n");
         try {
@@ -29,7 +29,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.1")
+    @Points("07-06.1")
     public void avgAll2() {
         io.setSysIn(userInput(50, 51, 52) + "-1\n");
         try {
@@ -45,7 +45,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.2")
+    @Points("07-06.2")
     public void avgPassing1() {
         io.setSysIn(userInput(-42, 24, 42, 72, 80, 52) + "-1\n");
         try {
@@ -61,7 +61,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.2")
+    @Points("07-06.2")
     public void avgPassing2() {
         io.setSysIn(userInput(69, 70, 71) + "-1\n");
         try {
@@ -77,7 +77,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.3")
+    @Points("07-06.3")
     public void passPercentage1() {
         io.setSysIn("102\n"
                 + "-4\n"
@@ -99,7 +99,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.3")
+    @Points("07-06.3")
     public void passPercentage2() {
         io.setSysIn(userInput(49, 50, 51) + "-1\n");
         try {
@@ -115,7 +115,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.4")
+    @Points("07-06.4")
     public void test1() {
         int[] numbers = {70};
         int[] distribution = {0, 0, 0, 1, 0, 0};
@@ -124,7 +124,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.4")
+    @Points("07-06.4")
     public void test2() {
         int[] numbers = {62, 70};
         int[] distribution = {0, 0, 1, 1, 0, 0};
@@ -133,7 +133,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.4")
+    @Points("07-06.4")
     public void test3() {
         int[] numbers = {75};
         int[] distribution = {0, 0, 0, 1, 0, 0};
@@ -142,7 +142,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.4")
+    @Points("07-06.4")
     public void test4() {
         int[] numbers = {88};
         int[] distribution = {0, 0, 0, 0, 1, 0};
@@ -151,7 +151,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.4")
+    @Points("07-06.4")
     public void test5() {
         int[] numbers = {94};
         int[] distribution = {0, 0, 0, 0, 0, 1};
@@ -160,7 +160,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.4")
+    @Points("07-06.4")
     public void testMany3() {
         int[] numbers = {44, 12, 81, 29, 70};
         int[] distribution = {3, 0, 0, 1, 1, 0};
@@ -169,7 +169,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.4")
+    @Points("07-06.4")
     public void testMany4() {
         int[] numbers = {52, 12, 72, 82, 92};
         int[] distribution = {1, 1, 0, 1, 1, 1};
@@ -178,7 +178,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.4")
+    @Points("07-06.4")
     public void testMany5() {
         int[] numbers = {34, 53, 62, 62, 61, 72, 73, 92, 96, 11};
         int[] distribution = {2, 1, 3, 2, 0, 2};
@@ -187,7 +187,7 @@ public class GradeStatisticsTest {
     }
 
     @Test
-    @Points("07-07.4")
+    @Points("07-06.4")
     public void badInput() {
         int[] numbers = {42, 71, 15, 72, -2};
         int[] distribution = {2, 0, 0, 2, 0, 0};
