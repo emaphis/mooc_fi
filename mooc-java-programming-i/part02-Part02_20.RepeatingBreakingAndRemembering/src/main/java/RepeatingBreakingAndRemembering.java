@@ -18,7 +18,7 @@ public class RepeatingBreakingAndRemembering {
         int numbers = 0;
         int even = 0;
         int odd = 0;
-        System.out.println("give numbers: ");
+        System.out.println("give numbers:");
         while (true) {
             int number = Integer.valueOf(scanner.nextLine());
 
