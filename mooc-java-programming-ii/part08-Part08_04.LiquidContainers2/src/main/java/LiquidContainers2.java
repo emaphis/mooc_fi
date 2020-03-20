@@ -26,8 +26,12 @@ public class LiquidContainers2 {
             if (command.equals("add")) {
                 first.add(amount);
             } else if (command.equals("move")) {
+                if (first.contains() - amount >= 0) {
+                    second.add(amount);
+                } else {
+                    second.add(first.contains());
+                }
                 first.remove(amount);
-                second.add(amount);
             } else if (command.equals("remove")) {
                 second.remove(amount);
             }
