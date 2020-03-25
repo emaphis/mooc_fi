@@ -69,4 +69,13 @@ public class Book {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        if (name == null) {
+            return published;
+        }
+
+        return published + name.hashCode();
+    }
+
 }
