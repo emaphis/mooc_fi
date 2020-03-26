@@ -14,7 +14,7 @@ public class VehicleRegistry {
     }
 
     public boolean add(LicensePlate licensePlate, String owner) {
-        if (!register.containsKey(owner)) {
+        if (!register.containsKey(licensePlate)) {
             register.put(licensePlate, owner);
             return true;
         } else {
@@ -47,11 +47,8 @@ public class VehicleRegistry {
         for (String owner : register.values()) {
             if (!owners.contains(owner)) {
                 owners.add(owner);
+                System.out.println(owner);
             }
-        }
-
-        for (String owner : owners) {
-            System.out.println(owner);
         }
     }
 }

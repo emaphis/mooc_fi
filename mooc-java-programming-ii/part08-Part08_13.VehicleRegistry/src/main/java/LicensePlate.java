@@ -33,7 +33,10 @@ public class LicensePlate {
 
     @Override
     public int hashCode() {
-        return country.hashCode() + liNumber.hashCode();
+        int hash = 7;
+        hash = 31 * hash + country.hashCode();
+        hash = 31 * hash + liNumber.hashCode();
+        return hash;
     }
 
 }
