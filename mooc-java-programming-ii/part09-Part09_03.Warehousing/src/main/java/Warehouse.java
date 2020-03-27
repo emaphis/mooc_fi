@@ -52,6 +52,11 @@ public class Warehouse {
         return amount;
     }
 
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+
     public String toString() {
         return "balance = " + this.balance + ", space left " + howMuchSpaceLeft();
     }
