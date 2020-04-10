@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.example07">
+  <ClassDiagramComponents>
+    <Class name="Engine" package="example07" visibility="public" xPosition="-69.0" yPosition="255.0">
+      <Fields>
+        <Field name="type" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="type"/>
+          <Argument type="String" name="ID"/>
+          <Argument type="String" name="manufacturing"/>
+          <Argument type="String" name="description"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getType" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Part" package="example07" visibility="public" xPosition="-49.0" yPosition="8.0">
+      <Fields>
+        <Field name="ID" type="String" visibility="private"/>
+        <Field name="manufacturing" type="String" visibility="private"/>
+        <Field name="description" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="ID"/>
+          <Argument type="String" name="manufacturing"/>
+          <Argument type="String" name="description"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getID" returnType="String" visibility="public"/>
+        <Method name="getManufacturing" returnType="String" visibility="public"/>
+        <Method name="getDescription" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="example07.Engine" target="example07.Part"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

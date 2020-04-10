@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.example06">
+  <ClassDiagramComponents>
+    <Class name="Book" package="example06" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="publisher" type="String" visibility="private"/>
+        <Field name="authors" type="List&lt;Person&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="publisher"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getPublisher" returnType="String" visibility="public"/>
+        <Method name="getAuthors" returnType="List&lt;Person&gt;" visibility="public"/>
+        <Method name="addAuthor" returnType="void" visibility="public">
+          <Argument type="Person" name="author"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Person" package="example06" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="age" type="int" visibility="private"/>
+        <Field name="book" type="Book" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="age"/>
+          <Argument type="Book" name="book"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="printPerson" returnType="void" visibility="public"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="book" source="example06.Person" target="example06.Book" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="authors" source="example06.Book" target="example06.Person" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Person&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

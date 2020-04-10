@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.quiz01">
+  <ClassDiagramComponents>
+    <Class name="Class" package="quiz01" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="teacher" type="Teacher" visibility="private"/>
+        <Field name="course" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Teacher" name="teacher"/>
+          <Argument type="String" name="course"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="printInformation" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LearningInstitution" package="quiz01" visibility="public" xPosition="37.0" yPosition="196.0">
+      <Fields>
+        <Field name="teachers" type="ArrayList&lt;Teacher&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="addTreacher" returnType="void" visibility="public">
+          <Argument type="Teacher" name="teacher"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Teacher" package="quiz01" visibility="public" xPosition="516.0" yPosition="132.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="teachers" source="quiz01.LearningInstitution" target="quiz01.Teacher" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Teacher&gt;"/>
+    <HasRelation name="teacher" source="quiz01.Class" target="quiz01.Teacher" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
