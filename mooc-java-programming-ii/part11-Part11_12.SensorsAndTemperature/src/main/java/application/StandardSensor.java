@@ -23,6 +23,10 @@ public class StandardSensor implements Sensor {
 
     @Override
     public int read() {
+        if (!isOn()) {
+            throw new IllegalStateException("Sensor is not on");
+        }
+
         return data;
     }
 

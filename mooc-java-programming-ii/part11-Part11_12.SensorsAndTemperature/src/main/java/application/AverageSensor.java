@@ -3,7 +3,6 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -43,17 +42,18 @@ public class AverageSensor implements Sensor {
 
     @Override
     public int read() {
-        if (!isOn()) {
+        if (!isOn() || sensors.isEmpty()) {
             throw new IllegalStateException("Average sensor measered while it is off");
         }
 
         int sum = 0;
-        sum = sensors.stream().map((sensor) -> sensor.read()).map((reading) -> {
-            readings.add(reading);
-            return reading;
-        }).map((reading) -> reading).reduce(sum, Integer::sum);
+        sum = sensors.stream()
+                .map(sensor -> sensor.read())
+                .reduce(sum, Integer::sum);
 
-        return sum / sensors.size();
+        int avg = sum / sensors.size();
+        readings.add(avg);
+        return avg;
     }
 
     public List<Integer> readings() {

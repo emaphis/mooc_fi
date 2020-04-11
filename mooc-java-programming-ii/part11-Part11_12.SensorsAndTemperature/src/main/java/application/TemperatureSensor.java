@@ -33,7 +33,7 @@ public class TemperatureSensor implements Sensor {
 
     @Override
     public int read() {
-        if (!on) {
+        if (!isOn()) {
             throw new IllegalStateException("Illegal read while sensor is off");
         }
 
