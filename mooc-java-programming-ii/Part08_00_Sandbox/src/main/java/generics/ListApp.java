@@ -1,11 +1,13 @@
+package generics;
 
-import java.util.Scanner;
-
-public class Program {
+/**
+ *
+ * @author emaphis
+ */
+public class ListApp {
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        // test your class here
+        System.out.println("Hello there");
         test1();
         System.out.println("*******");
         test2();
@@ -18,7 +20,6 @@ public class Program {
         System.out.println("********");
         test6();
     }
-
 
     private static void test1() {
         List<String> myList = new List<>();

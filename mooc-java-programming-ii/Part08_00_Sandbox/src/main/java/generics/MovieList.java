@@ -5,7 +5,7 @@ package generics;
  *
  * @author emaphis
  */
-public class MovieList implements List<Movie> {
+public class MovieList implements List1<Movie> {
 
     @Override
     public void add(Movie value) {

@@ -1,8 +1,6 @@
 
-package generics;
-
 /**
- * Two elements.
+ *
  * @author emaphis
  * @param <K>
  * @param <V>

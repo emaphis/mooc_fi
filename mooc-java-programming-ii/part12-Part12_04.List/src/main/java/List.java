@@ -1,9 +1,8 @@
 
-package generics;
-
 /**
  *
  * @author emaphis
+ * @param <Type>
  */
 public class List<Type> {
     private Type[] values;
@@ -73,4 +72,5 @@ public class List<Type> {
             values[i] = values[i + 1];
         }
     }
+
 }

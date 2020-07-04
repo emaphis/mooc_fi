@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author emaphis
  */
-public class GeneralList<T> implements List<T> {
+public class GeneralList<T> implements List1<T> {
     private ArrayList<T> values;
 
     public GeneralList() {

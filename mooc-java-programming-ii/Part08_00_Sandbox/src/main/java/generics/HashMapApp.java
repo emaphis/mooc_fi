@@ -1,11 +1,12 @@
 
-import java.util.Scanner;
+package generics;
 
-public class Program {
-
+/**
+ *
+ * @author emaphis
+ */
+public class HashMapApp {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // You can test the class here
         HashMap<Integer, String> map = new HashMap<>();
         map.add(1, "One");
         map.add(2, "Two");
