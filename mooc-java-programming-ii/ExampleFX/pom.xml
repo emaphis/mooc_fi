@@ -31,7 +31,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.1</version>
                 <configuration>
-                    <mainClass>application.MultipleLayoutApp</mainClass>
+                    <mainClass>eventhandling.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
