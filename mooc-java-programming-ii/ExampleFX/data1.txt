@@ -1,0 +1,5 @@
+Päivämäärä;Huopalahti (asema);Kaisaniemi;Kulosaaren silta et.;...
+ke 1 tammi 2014 00:00;;1;;;;;;2;5;3;;11;;;7;8
+ke 1 tammi 2014 01:00;;3;;;;;;6;5;1;;8;;;5;4
+ke 1 tammi 2014 02:00;;3;;;;;;1;1;1;;14;;;2;11
+ke 1 tammi 2014 03:00;;2;;;;;;0;2;0;;7;;;5;3

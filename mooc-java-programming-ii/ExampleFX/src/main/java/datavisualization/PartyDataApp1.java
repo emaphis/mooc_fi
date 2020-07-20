@@ -1,6 +1,5 @@
-package application;
+package datavisualization;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,24 +11,32 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
+/**
+ *
+ * @author emaphis
+ */
+public class PartyDataApp1 extends Application {
+    HashMap<String, HashMap<Integer, Double>> values;
 
-public class PartiesApplication extends Application {
-    private HashMap<String, HashMap<Integer, Double>> values;
-
-    public PartiesApplication() {
-        this.values = readVoterFile("partiesdata.tsv");
+    public PartyDataApp1() {
+        this.values = readVoterFile("votedata1.txt");
     }
+
 
     @Override
     public void start(Stage stage) {
         // create the x and y axes that the chart is going to use
         NumberAxis xAxis = new NumberAxis(1968, 2008, 4);
-        NumberAxis yAxis = new NumberAxis(0, 30, 5);
+        NumberAxis yAxis = new NumberAxis();
+
+        // set the titles for the axes
+        xAxis.setLabel("Year");
+        yAxis.setLabel("Relative support (%)");
 
         // create the line chart. The values of the chart are given as numbers
         // and it uses the axes we created earlier
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
-        lineChart.setTitle("Relative support of the parties");
+        lineChart.setTitle("Relative support in the years 1968-2008");
 
         // go through the parties and add them to the chart
         values.keySet().stream().forEach(party -> {
@@ -46,20 +53,21 @@ public class PartiesApplication extends Application {
             lineChart.getData().add(data);
         });
 
+
         // display the line chart
-        Scene view = new Scene(lineChart, 400, 300);
+        Scene view = new Scene(lineChart, 640, 480);
         stage.setScene(view);
         stage.show();
     }
 
     public static void main(String[] args) {
-        launch(PartiesApplication.class);
-        System.out.println("Hello world!");
+        launch(PartyDataApp1.class);
     }
 
+
     private HashMap<String, HashMap<Integer, Double>> readVoterFile(String filename) {
-        HashMap<String, HashMap<Integer, Double>> values1 = new HashMap<>();
-        ArrayList<Integer> yearList = new ArrayList<>();
+        var values = new HashMap<String, HashMap<Integer, Double>>();
+        var yearList = new ArrayList<Integer>();
 
         try(Scanner data = new Scanner(Paths.get(filename))) {
             String row = data.nextLine();
@@ -82,14 +90,14 @@ public class PartiesApplication extends Application {
                     }
 
                 }
-                values1.put(party, map);
+                values.put(party, map);
             }
 
-        } catch(IOException e) {
+        } catch(Exception e) {
             System.err.println("Error: " + e.toString());
         }
 
-        return values1;
+        return values;
     }
 
 }
