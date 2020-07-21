@@ -31,7 +31,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.1</version>
                 <configuration>
-                    <mainClass>datavisualization.PartyDataApp1</mainClass>
+                    <mainClass>datavisualization.AnimationApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
