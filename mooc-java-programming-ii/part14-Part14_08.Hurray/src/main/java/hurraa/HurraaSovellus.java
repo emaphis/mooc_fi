@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 public class HurraaSovellus extends Application {
@@ -15,6 +16,9 @@ public class HurraaSovellus extends Application {
         Button nappi = new Button("Hurraa!");
         pane.setCenter(nappi);
 
+        AudioClip sound = new AudioClip("file:Applause-Yannick_Lemieux.wav");
+
+        nappi.setOnAction(eh -> sound.play());
 
         Scene scene = new Scene(pane, 600, 400);
 
