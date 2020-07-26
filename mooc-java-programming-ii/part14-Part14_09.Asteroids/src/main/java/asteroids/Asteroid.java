@@ -3,11 +3,11 @@ package asteroids;
 
 import java.util.Random;
 
-public class Asteriod extends Character {
+public class Asteroid extends Character {
 
     private double rotationalMovement;
 
-    public Asteriod(int x, int y) {
+    public Asteroid(int x, int y) {
         super(new PolygonFactory().createPolygon(), x, y);
 
         Random rnd = new Random();

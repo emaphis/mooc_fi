@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class AsteroidsApplication extends Application {
@@ -21,15 +23,20 @@ public class AsteroidsApplication extends Application {
     @Override
     public void start(Stage stage) {
         Pane pane = new Pane();
+        Text text = new Text(10, 20, "Points: 0");
+        pane.getChildren().add(text);
+
+        AtomicInteger points = new AtomicInteger();
+
         pane.setPrefSize(WIDTH, HEIGHT);
 
-        Character ship = new Ship(WIDTH / 2, HEIGHT / 2);
+        Ship ship = new Ship(WIDTH / 2, HEIGHT / 2);
 
-        List<Asteriod> asteroids = new ArrayList<>();
+        List<Asteroid> asteroids = new ArrayList<>();
         Random rnd = new Random();
         for (int i = 0; i < 5; i++) {
-            Asteriod asteriod = new Asteriod(rnd.nextInt(WIDTH / 3), rnd.nextInt(HEIGHT));
-            asteroids.add(asteriod);
+            Asteroid asteroid = new Asteroid(rnd.nextInt(WIDTH / 3), rnd.nextInt(HEIGHT));
+            asteroids.add(asteroid);
         }
 
         pane.getChildren().add(ship.getCharacter());
@@ -82,25 +89,50 @@ public class AsteroidsApplication extends Application {
                 projectiles.forEach(projectile -> projectile.move());
 
                 projectiles.forEach(projectile -> {
-                    List<Asteriod> collisions = asteroids.stream()
-                                    .filter(asteriod -> asteriod.collide(projectile))
-                                    .collect(Collectors.toList());
-                    collisions.stream().forEach(collided -> {
-                        asteroids.remove(collided);
-                        pane.getChildren().remove(collided.getCharacter());
+                    asteroids.forEach(asteroid -> {
+                        if (projectile.collide(asteroid)) {
+                            projectile.setAlive(false);
+                            asteroid.setAlive(false);
+                        }
                     });
+
+                    if (!projectile.isAlive()) {
+                        text.setText("Points: " + points.addAndGet(1000));
+                    }
                 });
 
-                asteroids.forEach(asteroid -> {
+                projectiles.stream()
+                        .filter(projectile -> !projectile.isAlive())
+                        .forEach(projectile -> pane.getChildren().remove(projectile.getCharacter()));
+                projectiles.removeAll(projectiles.stream()
+                        .filter(projectile -> !projectile.isAlive())
+                        .collect(Collectors.toList()));
+
+                asteroids.stream()
+                        .filter(asteroid -> !asteroid.isAlive())
+                        .forEach(asteroid -> pane.getChildren().remove(asteroid.getCharacter()));
+                asteroids.removeAll(asteroids.stream()
+                        .filter(asteroid -> !asteroid.isAlive())
+                        .collect(Collectors.toList()));
+
+                asteroids.forEach(asteroid-> {
                     if (ship.collide(asteroid)) {
                         stop();
                     }
                 });
 
+                if (Math.random() < 0.005) {
+                    Asteroid asteroid = new Asteroid(WIDTH, HEIGHT);
+                    if (!asteroid.collide(ship)) {
+                        asteroids.add(asteroid);
+                        pane.getChildren().add(asteroid.getCharacter());
+                    }
+                }
+
             }
         }.start();
 
-        stage.setTitle("Asteroids 1233!");
+        stage.setTitle("Asteroids!");
         stage.setScene(scene);
         stage.show();
     }
@@ -112,7 +144,7 @@ public class AsteroidsApplication extends Application {
 
     public static int partsCompleted() {
         // State how many parts you have completed using the return value of this method
-        return 0;
+        return 4;
     }
 
 }
