@@ -105,15 +105,15 @@ public class SavingsCalculatorApplication extends Application {
         savingsSeries.getData().add(new XYChart.Data(0, 0));
         savingsWithInterestSeries.getData().add(new XYChart.Data(0, 0));
 
-        double prev = 0.0;
+        double savs = 0.0;
+        double intrs = 0.0;
 
         for (int i = 0; i < 30; i++) {
-            savingsSeries.getData().add(new XYChart.Data(i, i * savings * 12));
+            savingsSeries.getData().add(new XYChart.Data(i, savs));
+            savingsWithInterestSeries.getData().add(new XYChart.Data(i, intrs));
 
-            prev += savings * 12;
-            prev *= (1 + interest / 100.0);
-
-            savingsWithInterestSeries.getData().add(new XYChart.Data(i, prev));
+            savs += savings * 12;
+            intrs = (intrs + savings * 12) * (1.0 + interest / 100.0);
         }
     };
 
